@@ -59,6 +59,7 @@ class Money
 
 $usd = new Currency('USD');
 $uah = new Currency('UAH');
+$pln = new Currency('PLN');
 $money1 = new Money(100, $usd);
 $money2 = new Money(100, $uah);
 
