@@ -7,25 +7,14 @@ include_once "autoload.class.php";
 use Blog\Model\ArticlesModel;
 use Blog\Model\SystemModel;
 use Blog\scr\model\Users;
-//include_once 'scr/model/Users/SystemModelUser.php';
-
-/*
- *  SELECT * FROM articles
- *  SELECT * FROM articles WHERE id_article = '4'
- *  INSERT INTO articles ('name_article') VALUES ('puppsik')
- *  DELETE FROM articles WHERE name_article = 'pupsik' OR id_article = '1'
- *  UPDATE articles SET name_arcticle='jdu' WHERE id_arcticle = '$id_arcticle'
- * */
-
-    include_once "scr/model/System.php";
+use Blog\scr\Core;
 
     session_start();
-    $auth = $_SESSION['auth'] ?? false;
-    $auth = new Users\SystemModelUser($auth);
+    $auth = new Users\SystemModelUser($_SESSION['auth'] ?? false);
     $auth->issAuth();
 
-
-    $db = new \PDO('mysql:host=127.0.0.1;dbname=php1course', 'mysql', 'mysql');
+    $db = new Core\DBConnector();
+    $db = $db->connect();
     $articles = new ArticlesModel($db);
     $posts = $articles->getAllArticles();
     $msg = '';
@@ -35,7 +24,7 @@ use Blog\scr\model\Users;
         $msg = $_SESSION['msg'];
     }
 
-    $view = new SystemModel();
+    $view = new Core\Templater();
     $vars = [
             'msg' => $msg,
             'posts' => $posts,

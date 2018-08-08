@@ -13,5 +13,4 @@ interface SystemModelInterface
 {
     public static function trimName(string $name);
 
-    public function template (string $pathToNameTemplateInclude, array $vars);
 }

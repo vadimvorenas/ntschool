@@ -17,15 +17,6 @@ class SystemModel implements SystemModelInterface
         // TODO: Implement trimName() method.
     }
 
-    public function template(string $pathToNameTemplateInclude, array $vars)
-    {
-        extract($vars);
-        ob_start();
-        include_once "v/v_{$pathToNameTemplateInclude}.php";
-        return ob_get_clean();
-        // TODO: Implement template() method.
-    }
-
     function checkTitle($title, $pattern = "/[^0-9a-zа-пр-яё]+/i")
     {
         $res = preg_match($pattern, $title);

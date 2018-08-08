@@ -191,4 +191,4 @@ $autoloader->register();
 $autoloader->addNamespace('Blog', __DIR__ . 'scr');
 $autoloader->addNamespace('Blog\Model', __DIR__ . '/scr/model/articles');
 $autoloader->addNamespace('Blog\scr\model\Users', __DIR__ . '/scr/model/Users');
-//var_dump($autoloader);
+$autoloader->addNamespace('Blog\scr\Core', __DIR__ . '/scr/Core');
