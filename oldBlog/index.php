@@ -15,8 +15,7 @@ use Blog\scr\Core;
 
     $db = new Core\DBConnector();
     $db = $db->connect();
-    $articles = new ArticlesModel($db);
-    $posts = $articles->getAllArticles();
+    $route = new Core\Route($db);
     $msg = '';
     $checkEdit = $_GET['checkEdit'] ?? 'false';
 

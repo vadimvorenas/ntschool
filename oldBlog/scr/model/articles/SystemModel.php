@@ -17,7 +17,7 @@ class SystemModel implements SystemModelInterface
         // TODO: Implement trimName() method.
     }
 
-    function checkTitle($title, $pattern = "/[^0-9a-zа-пр-яё]+/i")
+    public static function checkTitle($title, $pattern = "/[^0-9a-zа-пр-яё]+/i")
     {
         $res = preg_match($pattern, $title);
         return $res;

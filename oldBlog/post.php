@@ -8,5 +8,5 @@
     $content = getArticles($id_article)['content'];
 //    $content =file_get_contents("data/$fname");
 
-    include_once 'v/v_post.php';
+    include_once 'v/articles.php';
 

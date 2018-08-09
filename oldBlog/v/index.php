@@ -1,4 +1,4 @@
-<div><?php echo $msg ?></div>
+<div><?php   ?></div>
 <a href="add.php">Добавить статью</a>
 <?php if ($auth){?>
     <a href="logout.php">Выйти</a>
