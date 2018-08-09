@@ -1,33 +1,33 @@
 <?php
+class Aer
+{
+    public function __construct()
+    {
 
-    include_once "function.php";
-    session_start();
+        mysqli_connect("mysql:host=127.0.0.1; dbname=php1course", 'mysql','mysql');
+       echo mysqli_query("SELECT * FROM `articles` ");
+        $db = new \PDO("mysql:host=127.0.0.1; dbname=php1course", 'mysql', 'mysql');
+        $db->exec('SET NAMES UTF8');
+        var_dump($db);
+        $sql = sprintf("SELECT * FROM %s WHERE id = :id ", 'users');
+        $sql = "SELECT * FROM `articles` ";
+        $query = $db->prepare($sql);
+//        $a = 'vadya';
 
-    $msg = '';
+//        $query->bindParam(':id', $a);
 
-    if (count($_POST) > 0){
-        $login      = $_POST['login'];
-        $password   = $_POST['password'];
-        $refferer   = $_GET['refferer'] ?? 'index.php';
-
-        if ($login == 'admin' && $password == 'admin'){
-            $_SESSION['auth']   = true;
-
-            if (isset($_POST['saveMe'])){
-                setcookie('login', myHash($login), time() + 3600*24*7);
-                setcookie('pass', myHash($password), time() + 3600*24*7);
-            }
-        header("location:$refferer");
-        exit();
-        }
-        else{
-            $msg = 'Логин или пароль неверны';
+        try {
+            var_dump(($query->execute()));
+        } catch
+        (\Exception $exception) {
+            echo $exception;
         }
     }
-
+}
+$a = new Aer();
 ?>
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,4 +49,4 @@
 </form>
 <?php echo $msg; ?>
 </body>
-</html>
+</html>-->

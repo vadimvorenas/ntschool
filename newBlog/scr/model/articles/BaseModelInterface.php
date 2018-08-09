@@ -15,5 +15,5 @@ interface BaseModelInterface
 
     public function getByArticle(int $id);
 
-    public function deletedArticle(int $id);
+    public function deletedArticle(string $id);
 }

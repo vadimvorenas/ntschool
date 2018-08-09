@@ -1,5 +1,5 @@
 <div><?php   ?></div>
-<a href="add.php">Добавить статью</a>
+<a href="articles/add">Добавить статью</a>
 <?php if ($auth){?>
     <a href="logout.php">Выйти</a>
 <?php }
@@ -10,13 +10,13 @@ else {?>
 <ul>
     <?php foreach ($articles as $article){?>
         <li>
-            <a href="post.php?id_article=<?php echo $article['id_article'] ?>">
+            <a href="articles/show/<?php echo $article['id'] ?>">
                 <?php echo $article['name_article'] ?>
             </a>
             <?php if ($auth){ ?>
                 <div>
-                    <a href="edit.php?id_article=<?php echo $article['id_article'] ?>">Редактировать</a>
-                    <a href="delete.php?id_article=<?php echo $article['id_article'] ?>">Удалить</a>
+                    <a href="articles/edit/<?php echo $article['id'] ?>">Редактировать</a>
+                    <a href="articles/delete/<?php echo $article['id'] ?>">Удалить</a>
                 </div>
             <?php }
             if (isset($_SESSION['msg'])){

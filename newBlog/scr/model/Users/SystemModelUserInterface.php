@@ -11,7 +11,7 @@ namespace Blog\scr\model\Users;
 
 interface SystemModelUserInterface
 {
-    public function encodeHashPassword(string $password);
+    public function encodeHash(string $string);
 
-    public function decodeHashPassword(string $password, string $hash);
+    public function decodeHash(string $string, string $hash);
 }

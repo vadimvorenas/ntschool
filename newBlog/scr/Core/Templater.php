@@ -15,7 +15,7 @@ class Templater
     {
         extract($vars);
         ob_start();
-        include_once "v/{$pathToNameTemplateInclude}.php";
+        include_once "view/{$pathToNameTemplateInclude}.php";
         return ob_get_clean();
         // TODO: Implement template() method.
     }

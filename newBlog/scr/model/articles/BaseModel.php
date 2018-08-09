@@ -50,9 +50,9 @@ class BaseModel implements BaseModelInterface
         // TODO: Implement getBy() method.
     }
 
-    public function deletedArticle(int $id)
+    public function deletedArticle(string $id)
     {
-        $sql = sprintf("DELETE %s WHERE id = :id" , $this->name_db);
+        $sql = sprintf("DELETE FROM %s WHERE id = :id" , $this->name_db);
         $stmp = $this->db->prepare($sql);
 
         try{

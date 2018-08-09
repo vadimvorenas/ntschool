@@ -6,7 +6,7 @@
         {
             extract($vars);
             ob_start();
-            include_once "v/v_{$pathToNameTemplateInclude}.php";
+            include_once "view/v_{$pathToNameTemplateInclude}.php";
             return ob_get_clean();
 
         }

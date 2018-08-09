@@ -36,9 +36,25 @@ class Route
 
         try {
             switch ($controllerName . '.' . $action) {
-                case 'article.read':
+                case 'articles.show':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
                     echo $controller->$action($id);
+                    break;
+                case 'articles.':
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->read();
+                    break;
+                case 'articles.edit':
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->$action($id);
+                    break;
+                case 'articles.delete':
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->$action($id);
+                    break;
+                case 'articles.add':
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->$action();
                     break;
             }
         } catch (\Throwable $throwable) {
