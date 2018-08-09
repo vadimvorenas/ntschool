@@ -1,6 +1,6 @@
 <?php
 
-    include_once 'm/articles/operation_articles.php';
+    include_once 'model/articles/operation_articles.php';
 
 
     $id_article = $_GET['id_article'] ?? '404';
@@ -8,5 +8,5 @@
     $content = getArticles($id_article)['content'];
 //    $content =file_get_contents("data/$fname");
 
-    include_once 'v/v_post.php';
+    include_once 'v/articles.php';
 

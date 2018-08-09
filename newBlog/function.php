@@ -1,7 +1,5 @@
 <?php
 
-     $pattern = "/[0-9a-z]+/i";
-
          function checkTitle($title, $pattern = "/[^0-9a-zа-пр-яё]+/i")
         {
             $res = preg_match($pattern, $title);
@@ -11,7 +9,7 @@
 
         function myHash ($name)
         {
-            $res = hash('sha256', $name . 'vadimvorenas');
+            $res = password_hash($name, PASSWORD_ARGON2I);
             return $res;
         }
 

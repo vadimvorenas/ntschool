@@ -29,15 +29,15 @@ class Route
 
 
         $controllers = [
-            \Blog\scr\Controller\ArticleController::class => function () {
-                return new \Blog\scr\Controller\ArticleController($this->db);
+            \Blog\scr\Controller\ArticlesController::class => function () {
+                return new \Blog\scr\Controller\ArticlesController($this->db);
             }
         ];
 
         try {
             switch ($controllerName . '.' . $action) {
                 case 'article.read':
-                    $controller = $controllers[\Blog\scr\Controller\ArticleController::class]();
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
                     echo $controller->$action($id);
                     break;
             }

@@ -1,33 +1,50 @@
 <?php
 
-namespace Blog;
+/*
+ *  SELECT * FROM articles
+ *  SELECT * FROM articles WHERE id_article = '4'
+ *  INSERT INTO articles ('name_article') VALUES ('puppsik')
+ *  DELETE FROM articles WHERE name_article = 'pupsik' OR id_article = '1'
+ *  UPDATE articles SET name_arcticle='jdu' WHERE id_arcticle = '$id_arcticle'
+ * */
 
-include_once "autoload.class.php";
-
-use Blog\Model\ArticlesModel;
-use Blog\Model\SystemModel;
-use Blog\scr\model\Users;
-use Blog\scr\Core;
+    include_once "function.php";
+    include_once "m/articles/operation_articles.php";
+    include_once "m/System.php";
 
     session_start();
-    $auth = new Users\SystemModelUser($_SESSION['auth'] ?? false);
-    $auth->issAuth();
+    $auth = $_SESSION['auth'] ?? false;
+    issAuth($auth);
 
-    $db = new Core\DBConnector();
-    $db = $db->connect();
-    $route = new Core\Route($db);
+//    $files = scandir('data');
+    $posts = [];
     $msg = '';
     $checkEdit = $_GET['checkEdit'] ?? 'false';
+
+    foreach (getArticles() as $article){
+        $posts[] = $article;
+        if (getArticles() === false) {
+            exit();
+        }
+    }
+
+//    foreach ($files as $file){
+//        if (is_file("data/$file")){
+//            if($file != '404')
+//                $posts[] = $file;
+//        }
+//    }
+
 
     if (isset($_SESSION['msg'])){
         $msg = $_SESSION['msg'];
     }
 
-    $view = new Core\Templater();
+    $view = new System();
     $vars = [
             'msg' => $msg,
             'posts' => $posts,
-            'auth' => $auth->getAuth(),
+            'auth' => $auth,
             'chekEdit' => $checkEdit
     ];
     $title = 'Главная';
