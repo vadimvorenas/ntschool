@@ -99,12 +99,21 @@ class UserController
 
     public function out ()
     {
-        $refferer   = $_GET['refferer'] ?? '../articles';
-        $_SESSION['auth'] = false;
-        setcookie('login', 0, time() - 3600*24*365);
-        setcookie('pass', 0, time() - 3600*24*365);
+        $msg = '';
+        if (count($_POST ) > 0) {
+            $refferer = $_GET['refferer'] ?? '../articles';
+            if (!empty($_POST['out'])) {
+                $_SESSION['auth'] = false;
+                setcookie('login', 0, time() - 3600 * 24 * 365);
+                setcookie('pass', 0, time() - 3600 * 24 * 365);
+            }
 
-        header("location:$refferer");
+            header("location:$refferer");
+            exit();
+        }
+        return $this->inner = Templater::template('logout', [
+            'msg' => $msg
+        ]);
     }
 
     public function delete ($id)
