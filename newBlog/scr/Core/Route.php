@@ -9,6 +9,7 @@
 namespace Blog\scr\Core;
 
 
+use Blog\scr\Controller\LogController;
 use Blog\scr\Controller\UserController;
 
 class Route
@@ -23,6 +24,7 @@ class Route
 
     public function start ()
     {
+
         list($controllerName, $action, $id) = explode('/', $_GET['path']);
         $controllerName = mb_strtolower($controllerName);
         $action = mb_strtolower($action);
@@ -36,6 +38,9 @@ class Route
             },
             \Blog\scr\Controller\UserController::class => function (){
                 return new \Blog\scr\Controller\UserController($this->db);
+            },
+            LogController::class => function(){
+                return new LogController($this->db);
             }
         ];
 
@@ -43,6 +48,7 @@ class Route
             switch ($controllerName . '.' . $action) {
                 case '.':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    $log = $controllers[LogController::class]()->entry();
                     echo $controller->read();
                     break;
                 case 'articles.show':
@@ -52,6 +58,7 @@ class Route
                 case 'articles.':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
                     echo $controller->read();
+                    $log = $controllers[LogController::class]()->entry();
                     break;
                 case 'articles.edit':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();

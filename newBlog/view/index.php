@@ -1,12 +1,12 @@
 <div><?php   ?></div>
 <a href="articles/add">Добавить статью</a>
-<a href="login/add">Регистрация</a>
-<?php if ($auth){?>
+<?php if ($auth):?>
     <a href="login/out">Выйти</a>
-<?php }
-else {?>
+<?php
+else :?>
+    <a href="login/add">Регистрация</a>
     <a href="login/in">Войти</a>
-<?php }?>
+<?php endif;?>
 <hr>
 <ul>
     <?php foreach ($articles as $article){?>

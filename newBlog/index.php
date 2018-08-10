@@ -17,5 +17,6 @@ use Blog\scr\Core;
     $route = new Core\Route($db);
 
     $title = 'Главная';
-
-
+//echo '<pre>';
+//var_dump($_SERVER);
+//echo '</pre>';
