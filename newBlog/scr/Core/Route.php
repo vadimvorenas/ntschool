@@ -45,10 +45,10 @@ class Route
         ];
 
         try {
+            $log = $controllers[LogController::class]()->entry();
             switch ($controllerName . '.' . $action) {
                 case '.':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
-                    $log = $controllers[LogController::class]()->entry();
                     echo $controller->read();
                     break;
                 case 'articles.show':
@@ -58,7 +58,6 @@ class Route
                 case 'articles.':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
                     echo $controller->read();
-                    $log = $controllers[LogController::class]()->entry();
                     break;
                 case 'articles.edit':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();

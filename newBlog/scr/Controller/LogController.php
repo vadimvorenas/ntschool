@@ -23,6 +23,9 @@ class LogController
 
     public function entry()
     {
-        $this->log->setEntry();
+        if (!isset($_COOKIE['entry'])) {
+            $this->log->setEntry();
+            setcookie('entry', '1', time() + 3600*12);
+        }
     }
 }
