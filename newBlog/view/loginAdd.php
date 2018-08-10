@@ -16,7 +16,7 @@
     </div>
     <div>
         Password Confirmation<br>
-        <input type="passwrod_confirmation" name="passwrod_confirmation">
+        <input type="password" name="passwrod_confirmation">
     </div>
     <br>Запомнить меня
     <input type="checkbox" name="saveMe">

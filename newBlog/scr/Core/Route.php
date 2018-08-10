@@ -9,6 +9,8 @@
 namespace Blog\scr\Core;
 
 
+use Blog\scr\Controller\UserController;
+
 class Route
 {
     protected $db;
@@ -31,11 +33,18 @@ class Route
         $controllers = [
             \Blog\scr\Controller\ArticlesController::class => function () {
                 return new \Blog\scr\Controller\ArticlesController($this->db);
+            },
+            \Blog\scr\Controller\UserController::class => function (){
+                return new \Blog\scr\Controller\UserController($this->db);
             }
         ];
 
         try {
             switch ($controllerName . '.' . $action) {
+                case '.':
+                    $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->read();
+                    break;
                 case 'articles.show':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
                     echo $controller->$action($id);
@@ -54,6 +63,18 @@ class Route
                     break;
                 case 'articles.add':
                     $controller = $controllers[\Blog\scr\Controller\ArticlesController::class]();
+                    echo $controller->$action();
+                    break;
+                case 'login.add':
+                    $controller = $controllers[UserController::class]();
+                    echo $controller->$action();
+                    break;
+                case 'login.in':
+                    $controller = $controllers[UserController::class]();
+                    echo $controller->$action();
+                    break;
+                case 'login.out':
+                    $controller = $controllers[UserController::class]();
                     echo $controller->$action();
                     break;
             }

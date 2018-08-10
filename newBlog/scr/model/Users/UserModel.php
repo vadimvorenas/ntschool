@@ -27,9 +27,10 @@ class UserModel extends SystemModelUser implements UserModelInterface
 
         $sql = sprintf("SELECT * FROM %s", $this->table_name);
         $query = $db->prepare($sql);
+        $query->execute();
 
         try{
-            return $query->execute();
+            return $query->fetchAll();
         }
         catch (\Exception $exception){
             echo $exception;
@@ -45,9 +46,10 @@ class UserModel extends SystemModelUser implements UserModelInterface
         $query = $db->prepare($sql);
 
         $query->bindParam(':login', $login);
+        $query->execute();
 
         try{
-            return $query->execute();
+            return $query->fetch();
         }
         catch (\Exception $exception){
             echo $exception;
@@ -63,9 +65,10 @@ class UserModel extends SystemModelUser implements UserModelInterface
         $query = $db->prepare($sql);
 
         $query->bindParam(':id', $id);
+        $query->execute();
 
         try{
-            return $query->execute();
+            return $query->fetch();
         }
         catch (\Exception $exception){
             echo $exception;
@@ -84,7 +87,7 @@ class UserModel extends SystemModelUser implements UserModelInterface
         $query->bindParam(':password', $password);
 
         try{
-            return $query->execute();
+                return $query->execute();
         }
         catch (\Exception $exception){
             echo $exception;

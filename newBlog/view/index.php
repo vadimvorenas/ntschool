@@ -1,10 +1,11 @@
 <div><?php   ?></div>
 <a href="articles/add">Добавить статью</a>
+<a href="login/add">Регистрация</a>
 <?php if ($auth){?>
-    <a href="logout.php">Выйти</a>
+    <a href="login/out">Выйти</a>
 <?php }
 else {?>
-    <a href="login.php">Войти</a>
+    <a href="login/in">Войти</a>
 <?php }?>
 <hr>
 <ul>

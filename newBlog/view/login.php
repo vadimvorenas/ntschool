@@ -8,7 +8,7 @@
 <form method="post">
     <div>
         Login<br>
-        <input type="text" name="login">
+        <input type="text" name="login" value="<?=$login?>">
     </div>
     <div>
         Password<br>
@@ -21,3 +21,4 @@
 <?php echo $msg; ?>
 </body>
 </html>
+

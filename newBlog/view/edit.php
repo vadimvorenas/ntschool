@@ -8,7 +8,7 @@
 <form method="post">
     <div>
         <div>Название</div>
-        <input title="text" name="nameArticle" value="<?php echo $nameArticle ?? ''?>">
+        <input title="text" name="nameArticle" value="<?php echo $name_article ?? ''?>">
     </div>
     <div>
         <div>Контент</div>
