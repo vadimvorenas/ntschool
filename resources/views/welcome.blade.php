@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel welcome to you one project
                 </div>
 
                 <div class="links">
