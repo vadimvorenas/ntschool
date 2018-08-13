@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('/post', function (){
+    echo 'Привет, это любой метод контроллера пост';
+});
