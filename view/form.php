@@ -29,10 +29,10 @@
 </head>
 <body>
 <a href="/Blog/Laravel/test_ITmaster/my/view/logout.php">Выйти</a>
-<table id="myTable" align="center" width="90%" border="1px" class="tablesorter">
+<table id="myTable" align="center" style="width: 60%" border="1px" class="tablesorter">
     <thead>
     <tr>
-        <th>Отметить</th>
+        <th></th>
         <th>Кому</th>
         <th>Тема</th>
         <th>Текст</th>
@@ -44,8 +44,8 @@
     <tbody>
     <? foreach ($form as $item): ?>
         <tr>
-            <td><input type="checkbox" name="<?= $item['id']?>" value="<?= $item['id']?>"></td>
-            <td><?= $item['toEmail']?></td>
+            <td style="width: 10px"><input type="checkbox" name="<?= $item['id']?>" value="<?= $item['id']?>"><?= $item['id']?></td>
+            <td style="width: 25%"><?= $item['toEmail']?></td>
             <td><?= $item['subject']?></td>
             <td><?= $item['text']?></td>
             <td><?= $item['create_date']?></td>
