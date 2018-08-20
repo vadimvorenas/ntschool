@@ -22,8 +22,8 @@ class UserController
                     && $_POST['login'] != null
                     && $_POST['password'] != null
         ){
-            $login      = (string) $_POST['login'];
-            $password   = (string) $_POST['password'];
+            $login      = (string) trim(htmlspecialchars($_POST['login']));
+            $password   = (string) trim(htmlspecialchars($_POST['password']));
             $user =  $this->user->getUserByLogin($login);
             $refferer   = $_GET['refferer'] ?? 'index.php';
 
@@ -48,6 +48,7 @@ class UserController
             return include_once 'view/login.php';
         }
 
+        return $msg;
 //        return include_once 'view/login.php';
 
 //        return Templater::template('view/login', [
@@ -60,9 +61,9 @@ class UserController
     {
         if (count($_POST) > 0){
             $onePC      = (string) $_COOKIE['PHPSESSID'];
-            $login      = (string) $_POST['login'];
-            $password   = (string) $_POST['password'];
-            $passwrod_confirmation = (string) $_POST['passwrod_confirmation'];
+            $login      = (string) trim(htmlspecialchars($_POST['login']));
+            $password   = (string) trim(htmlspecialchars($_POST['password']));
+            $passwrod_confirmation = (string) trim(htmlspecialchars($_POST['passwrod_confirmation']));
             $refferer   = $_GET['refferer'] ?? 'index.php';
             $login_hash = '';
             $id = '';
@@ -88,21 +89,28 @@ class UserController
                         exit();
                     } else {
                         $msg = 'Логин или пароль неверны';
+                        return include_once 'view/loginAdd.php';
+
+//                        header("location:loginAdd.php");
+//                        include_once 'index.php';
                     }
                 }
                 else{
                     $msg = 'Такой пользователь уже существует';
+                    return include_once 'view/loginAdd.php';
+//                    header("location:loginAdd.php");
+//                    include_once 'index.php';
                 }
             }
             else {
                 $msg = 'Пароли не совпадают';
+                return include_once 'view/loginAdd.php';
+//                header("location:loginAdd.php");
+//                include_once 'index.php';
             }
         }
 
-        return $this->inner = Templater::template('loginAdd', [
-            'login' => $login,
-            'msg' => $msg
-        ]);
+        return $msg;
     }
 
     public function out ()

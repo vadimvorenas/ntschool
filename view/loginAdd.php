@@ -37,7 +37,8 @@ div {
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="../index.php">
+<a href="/Blog/Laravel/test_ITmaster/my/index.php">Back</a>
+<form method="post" action="/Blog/Laravel/test_ITmaster/my/index.php">
     <div>
         Login<br>
        <input type="text" id="lname" name="login" placeholder="Your Login..">
@@ -53,6 +54,6 @@ div {
     <input type="checkbox" name="saveMe">
     <input type="submit" value="Ok">
 </form>
-<?php echo $msg; ?>
+<h3><?php echo $msg ?? ''; ?></h3>
 </body>
 </html>

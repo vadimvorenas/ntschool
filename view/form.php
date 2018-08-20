@@ -44,7 +44,7 @@
     <tbody>
     <? foreach ($form as $item): ?>
         <tr>
-            <td style="width: 10px"><input type="checkbox" name="<?= $item['id']?>" value="<?= $item['id']?>"><?= $item['id']?></td>
+            <td style="width: 10px"><input type="checkbox" name="<?= $item['id']?>" value="<?= $item['id']?>"></td>
             <td style="width: 25%"><?= $item['toEmail']?></td>
             <td><?= $item['subject']?></td>
             <td><?= $item['text']?></td>

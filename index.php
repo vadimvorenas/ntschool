@@ -15,18 +15,19 @@ $controller = new UserController($db);
 $id =  $user->getUserByLogin((string) $_SESSION['login'] ?? '');
 $form = $mail->get( (string) $id['id']);
 $auth = $user->issAuth();
+//$msg = $_
 //var_dump($form);
 
 
 if (count($_POST)>0){
 
-    if (isset($_POST['passwrod_confirmation'])){
+    if (isset($_POST['passwrod_confirmation']) ){
         $controller->add();
     }
-    elseif (isset($_POST['login']) && $auth) {
+    elseif (isset($_POST['login']) ) {
         $controller->in();
-        header("Location: index.php");
-        include_once 'view/form.php';
+//        header("Location: index.php");
+//        include_once 'view/form.php';
     }
     elseif ((isset($_POST['out'])) && $auth){
         $controller->out();
