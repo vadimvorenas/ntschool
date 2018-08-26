@@ -19,7 +19,7 @@ class MailController
     public function send()
     {
 
-        $user_id = $this->user->getUserByLogin($_SESSION['login']);
+        $user_id = $this->user->getUserByLogin((string) $_SESSION['login']);
         $user_id = $user_id['id'];
         $to = $_POST['email'];
         $subject = $_POST['name'];

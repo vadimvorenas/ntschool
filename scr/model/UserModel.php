@@ -39,7 +39,7 @@ class UserModel extends SystemModelUser
         }
     }
 
-    public function getUserByLogin (string $login)
+    public function getUserByLogin ( $login)
     {
         $db = $this->db;
         $db->exec('SET NAMES UTF8');
